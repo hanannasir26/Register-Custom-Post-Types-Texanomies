@@ -1,0 +1,37 @@
+/**
+	* Register news texanomies
+	**/
+
+
+function acvr_custom_post() 
+{ 	
+
+
+//Register News Type Texanomy
+	 $args = array(
+        'labels' => array(
+            'name' => 'News Type',
+            'singular_name' => 'News Type',
+        ),
+        'public' => true,
+        'hierarchical' => true,
+        'rewrite' => array( 'slug' => 'news_type_tax' ),
+    );
+   
+   register_taxonomy( 'news_type_tax', 'news_post', $args );
+	
+//Register News Categories 
+	$args_cat = array(
+        'labels' => array(
+            'name' => 'News Categories',
+            'singular_name' => 'News Categories',
+        ),
+        'public' => true,
+        'hierarchical' => true,
+        'rewrite' => array( 'slug' => 'news_category_tax' ),
+    );
+    register_taxonomy( 'news_category_tax', 'news_post', $args_cat );
+}
+
+// adding the function to the Wordpress init
+add_action( 'init', 'acvr_custom_post');
