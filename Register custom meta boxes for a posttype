@@ -1,0 +1,25 @@
+/**
+* Register custom meta boxes
+**/
+
+function add_custom_meta_boxes() {
+    add_meta_box(
+        'custom-meta-box',
+        'Custom Meta Box',
+        'custom_meta_box_callback',
+        'my_custom_post_type',
+        'normal',
+        'default'
+    );
+}
+
+add_action( 'add_meta_boxes', 'add_custom_meta_boxes' );
+
+function custom_meta_box_callback( $post ) {
+    // Output HTML for your custom meta box here
+}
+
+function save_custom_meta_data( $post_id ) {
+    // Save custom meta data here
+}
+add_action( 'save_post_my_custom_post_type', 'save_custom_meta_data' );
